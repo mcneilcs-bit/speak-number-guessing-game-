@@ -8,9 +8,8 @@ function speakMessage(message) {
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
 }
-window.addEventListener('DOMContentLoaded', () => {
 speakMessage('Welcome to the number guessing game! Try to guess a number between 1 and 100 by speaking your guess into the microphone. Click the microphone icon to start. Good luck!');
-});
+
 
 const msgEl = document.getElementById('msg');
 //Generate random number//
