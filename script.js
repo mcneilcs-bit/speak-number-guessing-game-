@@ -8,7 +8,14 @@ function speakMessage(message) {
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
 }
-speakMessage('Welcome to the number guessing game! Try to guess a number between 1 and 100 by speaking your guess into the microphone. Click the microphone icon to start. Good luck!');
+window.addEventListener('DOMContentLoaded', () => { 
+    if (!sessionStorage.getItem('welcomeSpoken')) {
+        speakMessage('Welcome to the number guessing game! Try to guess a number between 1 and 100 by speaking your guess into the microphone. Click the microphone icon to start. Good luck!');
+        sessionStorage.setItem('welcomeSpoken', 'true');
+    }
+    
+});
+
 
 
 const msgEl = document.getElementById('msg');
