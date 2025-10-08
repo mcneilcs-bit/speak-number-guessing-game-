@@ -9,11 +9,18 @@ function speakMessage(message) {
     window.speechSynthesis.speak(utterance);
 }
 window.addEventListener('DOMContentLoaded', () => { 
-    if (!sessionStorage.getItem('welcomeSpoken')) {
+    // add a click listener to start the game//
+    function unlockAudio() {
         speakMessage('Welcome to the number guessing game! Try to guess a number between 1 and 100 by speaking your guess into the microphone. Click the microphone icon to start. Good luck!');
-        sessionStorage.setItem('welcomeSpoken', 'true');
+       document.body.removeEventListener('click', unlockAudio);
     }
-    
+    try {
+        speakMessage ('Welcome to the number guessing game! Try to guess a number between 1 and 100 by speaking your guess into the microphone. Click the microphone icon to start. Good luck!');
+    } catch (e) {
+        console.log("Audio blocked until user interacts ", e);
+    }
+    //click listener to unlock audi if blocked//
+    document.body.addEventListener('click', unlockAudio);
 });
 
 
